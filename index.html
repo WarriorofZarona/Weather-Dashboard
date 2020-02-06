@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/d78de1b3fa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header></header>
+    <h1>Weather Dashboard</h1>
+    </header>
+
+    <div class="sidebar">
+        <h3>Search for a City:</h3>
+        <input type="text"></input><button class="fas fa-search"></button>
+        <div class="history"></div>
+    </div>
+
+    <div class="results">
+        <div class="city">
+            <span class="date"></span>
+            <span class="icon"></span>
+        </div>
+        <div class="temperature"></div>
+        <div class="humdity"></div>
+        <div class="uv-index"></div>
+    </div>
+
+    <div class="forecast">
+        <h3>5 Day Forecast:</h3>
+        <div class="cards"></div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
