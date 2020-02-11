@@ -4,14 +4,44 @@ $(document).ready(function () {
 
     var city = "New York"
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+    var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+
+    $.ajax({
+        url: currentWeatherURL,
+        method: "GET"
+    }).then(function (current) {
+        console.log("Current weather URL is: " + current);
+        console.log(current);
+
+        var longitude = current.coord.lon;
+        var latitude = current.coord.lat;
+
+        console.log("Longitude is " + longitude + ", Latitude is " + latitude);
+
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?appid=" + apiKey + "&lat=" + latitude + "&lon=" + longitude;
+        $.ajax({
+
+            url: uvURL,
+            method: "GET"
+        }).then(function (UV) {
+            console.log("Current forecast URL is: " + uvURL);
+            console.log(UV);
+        })
+
+    })
+
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
 
     $.ajax({
 
-        url: queryURL,
+        url: forecastURL,
         method: "GET"
-    }).then(function (response) {
-        console.log(response);
+    }).then(function (forecast) {
+        console.log("Current forecast URL is: " + forecastURL);
+        console.log(forecast);
     })
+
+
+
 
 })
