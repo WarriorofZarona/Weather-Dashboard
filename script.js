@@ -10,7 +10,7 @@ $(document).ready(function () {
         url: currentWeatherURL,
         method: "GET"
     }).then(function (current) {
-        console.log("Current weather URL is: " + current);
+        console.log("Current weather URL is: " + currentWeatherURL);
         console.log(current);
 
         var longitude = current.coord.lon;
