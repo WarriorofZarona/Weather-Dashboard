@@ -24,7 +24,7 @@ $(document).ready(function () {
             url: uvURL,
             method: "GET"
         }).then(function (UV) {
-            console.log("Current forecast URL is: " + uvURL);
+            console.log("Current UV URL is: " + uvURL);
             console.log(UV);
         })
 
