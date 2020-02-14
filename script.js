@@ -1,47 +1,57 @@
 $(document).ready(function () {
 
-    var apiKey = "8c20fecf1dc12b4c826b47b8de6dbee6"
 
-    var city = "New York"
+    $("button").click(function () {
 
-    var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
 
-    $.ajax({
-        url: currentWeatherURL,
-        method: "GET"
-    }).then(function (current) {
-        console.log("Current weather URL is: " + currentWeatherURL);
-        console.log(current);
+        var apiKey = "8c20fecf1dc12b4c826b47b8de6dbee6"
 
-        var longitude = current.coord.lon;
-        var latitude = current.coord.lat;
 
-        console.log("Longitude is " + longitude + ", Latitude is " + latitude);
+        var city = $("#search").val();
 
-        var uvURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?appid=" + apiKey + "&lat=" + latitude + "&lon=" + longitude;
+        console.log("The city being searched is " + city)
+
+        $(".history").prepend(city);
+
+        var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+
         $.ajax({
-
-            url: uvURL,
+            url: currentWeatherURL,
             method: "GET"
-        }).then(function (UV) {
-            console.log("Current UV URL is: " + uvURL);
-            console.log(UV);
+        }).then(function (current) {
+            console.log("Current weather URL is: " + currentWeatherURL);
+            console.log(current);
+
+            var longitude = current.coord.lon;
+            var latitude = current.coord.lat;
+
+            console.log("Longitude is " + longitude + ", Latitude is " + latitude);
+
+            var uvURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?appid=" + apiKey + "&lat=" + latitude + "&lon=" + longitude;
+            $.ajax({
+
+                url: uvURL,
+                method: "GET"
+            }).then(function (UV) {
+                console.log("Current UV URL is: " + uvURL);
+                console.log(UV);
+            })
+
         })
 
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
+
+        $.ajax({
+
+            url: forecastURL,
+            method: "GET"
+        }).then(function (forecast) {
+            console.log("Current forecast URL is: " + forecastURL);
+            console.log(forecast);
+        })
+
+
+
+
     })
-
-    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
-
-    $.ajax({
-
-        url: forecastURL,
-        method: "GET"
-    }).then(function (forecast) {
-        console.log("Current forecast URL is: " + forecastURL);
-        console.log(forecast);
-    })
-
-
-
-
 })
