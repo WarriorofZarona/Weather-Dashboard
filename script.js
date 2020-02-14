@@ -1,17 +1,30 @@
 $(document).ready(function () {
 
+    var cityHistory = JSON.parse(localStorage.getItem("City History"));
+
+    if (cityHistory === null) {
+
+        cityHistory = [];
+
+    }
+
+    console.log(cityHistory);
+
+    historyList()
 
     $("button").click(function () {
 
-
         var apiKey = "8c20fecf1dc12b4c826b47b8de6dbee6"
 
-
         var city = $("#search").val();
-
         console.log("The city being searched is " + city)
 
-        $(".history").prepend(city);
+
+        cityHistory.push(city);
+        console.log(cityHistory);
+
+        $(".history").empty()
+        historyList();
 
         var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
 
@@ -50,8 +63,16 @@ $(document).ready(function () {
             console.log(forecast);
         })
 
-
-
+        localStorage.setItem("City History", JSON.stringify(cityHistory));
 
     })
+
+    function historyList() {
+
+        $.each(cityHistory, function (i, value) {
+
+            $(".history").prepend($("<div>").text(value));
+
+        })
+    }
 })
