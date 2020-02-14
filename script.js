@@ -71,7 +71,7 @@ $(document).ready(function () {
 
         $.each(cityHistory, function (i, value) {
 
-            $(".history").prepend($("<div>").text(value));
+            $(".history").prepend($("<li>").addClass("list-group-item text-secondary").text(value));
 
         })
     }
