@@ -4,21 +4,16 @@ $(document).ready(function () {
     var city;
 
     if (cityHistory === null) {
-
         cityHistory = [];
-
     }
-
     console.log(cityHistory);
-
     historyList()
-
     $("button").click(function () {
 
         city = $("#search").val();
         console.log("The city being searched is " + city)
 
-        if (jQuery.inArray(city, cityHistory) === -1) {
+        if ($.inArray(city, cityHistory) === -1 && city === "") {
 
             cityHistory.push(city);
         }
@@ -56,6 +51,14 @@ $(document).ready(function () {
         }).then(function (current) {
             console.log("Current weather URL is: " + currentWeatherURL);
             console.log(current);
+
+            var name = current.name;
+            var icon = current.weather[0].icon;
+            console.log(icon)
+
+            $(".city").addClass("h3 px-2 pt-3").text(name);
+            $(".date").addClass("h3 pt-3").text("(" + moment().format('L') + ")");
+            $(".icon").addClass("img-fluid").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
 
             var longitude = current.coord.lon;
             var latitude = current.coord.lat;
