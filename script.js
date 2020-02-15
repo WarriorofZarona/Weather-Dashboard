@@ -56,6 +56,7 @@ $(document).ready(function () {
             console.log(current);
 
             var name = current.name;
+            var conditions = current.weather[0].main
             var icon = current.weather[0].icon;
             var temperature = current.main.temp;
             var humidity = current.main.humidity;
@@ -63,7 +64,7 @@ $(document).ready(function () {
 
             $(".city").addClass("h3 px-2 pt-3").text(name);
             $(".date").addClass("h3 pt-3").text("(" + moment().format('L') + ")");
-            $(".icon").addClass("img-fluid").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
+            $(".icon").addClass("img-fluid").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png").attr("title", conditions).attr("alt", conditions);
             $(".temperature").addClass("h5 p-2").text("Temperature: " + temperature + " °F");
             $(".humidity").addClass("h5 p-2").text("Humidity: " + humidity + "%");
             $(".wind-speed").addClass("h5 p-2").text("Wind Speed: " + windSpeed + " MPH");
