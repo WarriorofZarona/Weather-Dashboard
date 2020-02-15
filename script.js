@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     var cityHistory = JSON.parse(localStorage.getItem("City History"));
+    var city;
 
     if (cityHistory === null) {
 
@@ -14,7 +15,7 @@ $(document).ready(function () {
 
     $("button").click(function () {
 
-        var city = $("#search").val();
+        city = $("#search").val();
         console.log("The city being searched is " + city)
 
         if (jQuery.inArray(city, cityHistory) === -1) {
@@ -35,14 +36,14 @@ $(document).ready(function () {
 
     })
 
-    function historyList() {
+    $(".list-group-item").click(function () {
+        $(".list-group-item").addClass("text-secondary").removeClass("text-primary");
+        $(this).removeClass("text-secondary").addClass("text-primary");
+        city = $(this).text();
+        console.log(city);
+        displayWeather();
 
-        $.each(cityHistory, function (i, value) {
-
-            $(".history").prepend($("<li>").addClass("list-group-item text-secondary").text(value));
-
-        })
-    }
+    })
 
     function displayWeather() {
         var apiKey = "8c20fecf1dc12b4c826b47b8de6dbee6"
@@ -82,6 +83,16 @@ $(document).ready(function () {
         }).then(function (forecast) {
             console.log("Current forecast URL is: " + forecastURL);
             console.log(forecast);
+        })
+    }
+
+
+    function historyList() {
+
+        $.each(cityHistory, function (i, value) {
+
+            $(".history").prepend($("<li>").addClass("list-group-item text-secondary").text(value));
+
         })
     }
 })
