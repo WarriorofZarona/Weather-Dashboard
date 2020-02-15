@@ -60,7 +60,7 @@ $(document).ready(function () {
             $(".city").addClass("h3 px-2 pt-3").text(name);
             $(".date").addClass("h3 pt-3").text("(" + moment().format('L') + ")");
             $(".icon").addClass("img-fluid").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
-            $(".temperature").text("Temperature: " + temperature + " °F");
+            $(".temperature").addClass("h5 px-2").text("Temperature: " + temperature + " °F");
 
             var longitude = current.coord.lon;
             var latitude = current.coord.lat;
