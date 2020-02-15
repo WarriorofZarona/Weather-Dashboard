@@ -54,13 +54,16 @@ $(document).ready(function () {
 
             var name = current.name;
             var icon = current.weather[0].icon;
-            var temperature = current.main.temp
-            console.log(temperature);
+            var temperature = current.main.temp;
+            var humidity = current.main.humidity;
+            var windSpeed = current.wind.speed;
 
             $(".city").addClass("h3 px-2 pt-3").text(name);
             $(".date").addClass("h3 pt-3").text("(" + moment().format('L') + ")");
             $(".icon").addClass("img-fluid").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
-            $(".temperature").addClass("h5 px-2").text("Temperature: " + temperature + " °F");
+            $(".temperature").addClass("h5 p-2").text("Temperature: " + temperature + " °F");
+            $(".humidity").addClass("h5 p-2").text("Humidity: " + humidity + "%");
+            $(".wind-speed").addClass("h5 p-2").text("Wind Speed: " + windSpeed + " MPH");
 
             var longitude = current.coord.lon;
             var latitude = current.coord.lat;
@@ -75,6 +78,11 @@ $(document).ready(function () {
             }).then(function (UV) {
                 console.log("Current UV URL is: " + uvURL);
                 console.log(UV);
+
+                var uvIndex = UV[0].value;
+
+                $(".uv-index").addClass("h5 p-2").html("UV Index: " + "<span class=\"bg-danger text-light rounded p-1\">" + uvIndex + "</span>");
+
             })
 
         })
