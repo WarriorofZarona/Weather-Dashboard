@@ -19,8 +19,11 @@ $(document).ready(function () {
         var city = $("#search").val();
         console.log("The city being searched is " + city)
 
-
         cityHistory.push(city);
+
+        if (cityHistory.length > 8) {
+            cityHistory.shift(); // removes the first element from an array 
+        }
         console.log(cityHistory);
 
         $(".history").empty()
