@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $(".main").hide();
 
     var cityHistory = JSON.parse(localStorage.getItem("City History"));
     var city;
@@ -41,6 +42,8 @@ $(document).ready(function () {
     })
 
     function displayWeather() {
+        $(".main").show();
+
         var apiKey = "8c20fecf1dc12b4c826b47b8de6dbee6"
 
         var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=" + city + "&appid=" + apiKey;
