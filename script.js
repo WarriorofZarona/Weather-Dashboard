@@ -116,22 +116,35 @@ $(document).ready(function () {
             console.log(forecast);
 
             var cardLength = 5;
-            var cardArray = [];
-
-            for (var i = 0; i < cardLength; i++) {
-
-                cardArray.push(forecast.list[i]);
-
-            }
-            console.log(cardArray);
 
 
             $(".forecast").show();
 
-            $(".card-title").text(moment().add('1', 'days').format('L'))
-            $(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + forecast.list[0].weather[0].icon + "@2x.png")
-            $(".card-temperature").addClass("my-1").text("Temp: " + forecast.list[0].main.temp + " °F")
-            $(".card-humidity").text("Humidity: " + forecast.list[0].main.humidity + "%")
+            for (var i = 0; i < cardLength; i++) {
+
+                var cardCreation = $("<div>").addClass("card text-white bg-primary mb-2").attr("id", "card" + i);
+
+                var cardBody = $("<div>").addClass("card-body");
+
+                cardBody.append($("<h5>").addClass(".card-title").text(moment().add(i + 1, 'days').format('l')));
+
+                cardBody.append($("<img>").addClass(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + forecast.list[i].weather[0].icon + "@2x.png"));
+
+                cardBody.append($("<div>").addClass(".card-temperature").addClass("my-1").text("Temp: " + forecast.list[i].main.temp + " °F"));
+
+                cardBody.append($("<div>").addClass(".card-humidity").text("Humidity: " + forecast.list[i].main.humidity + "%"));
+
+                cardCreation.append(cardBody);
+
+                $(".card-deck").append(cardCreation);
+
+
+            }
+
+            // $(".card-title").text(moment().add('1', 'days').format('L'))
+            // $(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + forecast.list[0].weather[0].icon + "@2x.png")
+            // $(".card-temperature").addClass("my-1").text("Temp: " + forecast.list[0].main.temp + " °F")
+            // $(".card-humidity").text("Humidity: " + forecast.list[0].main.humidity + "%")
 
         })
     }
