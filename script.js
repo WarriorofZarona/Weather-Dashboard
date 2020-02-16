@@ -105,7 +105,7 @@ $(document).ready(function () {
 
         })
 
-        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + city + "&appid=" + apiKey;
 
         $.ajax({
 
@@ -129,8 +129,9 @@ $(document).ready(function () {
             $(".forecast").show();
 
             $(".card-title").text(moment().add('1', 'days').format('L'))
-            $(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + cardArray[0].weather[0].icon + "@2x.png")
-
+            $(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + forecast.list[0].weather[0].icon + "@2x.png")
+            $(".card-temperature").addClass("my-1").text("Temp: " + forecast.list[0].main.temp + " °F")
+            $(".card-humidity").text("Humidity: " + forecast.list[0].main.humidity + "%")
 
         })
     }

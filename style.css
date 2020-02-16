@@ -3,11 +3,11 @@
 }
 
 .card {
-    max-width: 125%;
-    height: 130%;
+    max-width: 150%;
+    height: 100%;
 }
 
 .card-icon {
-    max-width: 1%;
+    max-width: 40%;
     height: auto;
 }
