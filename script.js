@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $(".error").hide();
+    $(".forecast").hide();
     $(".main").hide();
 
     var cityHistory = JSON.parse(localStorage.getItem("City History"));
@@ -39,9 +41,11 @@ $(document).ready(function () {
         console.log(city);
         displayWeather();
 
+
     })
 
     function displayWeather() {
+        $(".forecast").hide();
         $(".main").show();
 
         var apiKey = "8c20fecf1dc12b4c826b47b8de6dbee6"
@@ -51,9 +55,13 @@ $(document).ready(function () {
         $.ajax({
             url: currentWeatherURL,
             method: "GET"
+
         }).then(function (current) {
             console.log("Current weather URL is: " + currentWeatherURL);
             console.log(current);
+
+            $(".error").hide();
+            $(".results").show();
 
             var name = current.name;
             var conditions = current.weather[0].main
@@ -88,6 +96,12 @@ $(document).ready(function () {
                 $(".uv-index").addClass("h5 p-2").html("UV Index: " + "<span class=\"bg-danger text-light rounded p-1\">" + uvIndex + "</span>");
 
             })
+        }).fail(function () {
+
+            console.log("FAILED!")
+            $(".results").hide();
+            $(".forecast").hide();
+            $(".error").text("Cannot find results for \"" + city + ".\" Please use a different city.").show();
 
         })
 
@@ -100,7 +114,7 @@ $(document).ready(function () {
         }).then(function (forecast) {
             console.log("Current forecast URL is: " + forecastURL);
             console.log(forecast);
-
+            $(".forecast").show();
             // <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
             //     <div class="card-body">
             //         <h5 class="card-title">Primary card title</h5>
