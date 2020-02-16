@@ -114,13 +114,23 @@ $(document).ready(function () {
         }).then(function (forecast) {
             console.log("Current forecast URL is: " + forecastURL);
             console.log(forecast);
+
+            var cardLength = 5;
+            var cardArray = [];
+
+            for (var i = 0; i < cardLength; i++) {
+
+                cardArray.push(forecast.list[i]);
+
+            }
+            console.log(cardArray);
+
+
             $(".forecast").show();
-            // <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            //     <div class="card-body">
-            //         <h5 class="card-title">Primary card title</h5>
-            //         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            //     </div>
-            // </div>
+
+            $(".card-title").text(moment().add('1', 'days').format('L'))
+            $(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + cardArray[0].weather[0].icon + "@2x.png")
+
 
         })
     }

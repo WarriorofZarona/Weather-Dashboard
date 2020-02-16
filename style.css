@@ -1,3 +1,13 @@
 .img-fluid {
     max-width: 7%;
 }
+
+.card {
+    max-width: 125%;
+    height: 130%;
+}
+
+.card-icon {
+    max-width: 1%;
+    height: auto;
+}
