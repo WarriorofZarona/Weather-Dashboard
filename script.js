@@ -42,7 +42,7 @@ $(document).ready(function () {
             var windSpeed = current.wind.speed;
             $(".city").addClass("h3 px-2 pt-3").text(name);
             $(".date").addClass("h3 pt-3").text("(" + moment().format('L') + ")"); // Moment.js was the easiest way to display current date
-            $(".icon").addClass("img-fluid").attr("src", "http://openweathermap.org/img/wn/" + woz + "@2x.png").attr("title", conditions).attr("alt", conditions);
+            $(".icon").attr("src", "http://openweathermap.org/img/wn/" + woz + "@2x.png").attr("title", conditions).attr("alt", conditions);
             $(".temperature").addClass("h5 p-2").text("Temperature: " + temperature + " °F");
             $(".humidity").addClass("h5 p-2").text("Humidity: " + humidity + "%");
             $(".wind-speed").addClass("h5 p-2").text("Wind Speed: " + windSpeed + " MPH");
