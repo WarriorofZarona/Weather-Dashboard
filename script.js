@@ -11,12 +11,15 @@ $(document).ready(function () {
     }
     console.log(cityHistory);
     historyList()
+    clickHistory();
+
+
     $("button").click(function () {
 
         city = $("#search").val();
         console.log("The city being searched is " + city)
 
-        if ($.inArray(city, cityHistory) === -1 && city === "") {
+        if ($.inArray(city, cityHistory) === -1 && city !== "") {
 
             cityHistory.push(city);
         }
@@ -29,20 +32,11 @@ $(document).ready(function () {
         $(".history").empty()
         historyList();
         displayWeather();
-
+        clickHistory();
         localStorage.setItem("City History", JSON.stringify(cityHistory));
 
     })
 
-    $(".list-group-item").click(function () {
-        $(".list-group-item").addClass("text-secondary").removeClass("text-primary");
-        $(this).removeClass("text-secondary").addClass("text-primary");
-        city = $(this).text();
-        console.log(city);
-        displayWeather();
-
-
-    })
 
     function displayWeather() {
         $(".forecast").hide();
@@ -117,7 +111,7 @@ $(document).ready(function () {
 
             var cardLength = 5;
 
-
+            $(".card-deck").empty();
             $(".forecast").show();
 
             for (var i = 0; i < cardLength; i++) {
@@ -155,6 +149,18 @@ $(document).ready(function () {
         $.each(cityHistory, function (i, value) {
 
             $(".history").prepend($("<li>").addClass("list-group-item text-secondary").text(value));
+
+        })
+    }
+
+    function clickHistory() {
+        $(".list-group-item").click(function () {
+            $(".list-group-item").addClass("text-secondary").removeClass("text-primary");
+            $(this).removeClass("text-secondary").addClass("text-primary");
+            city = $(this).text();
+            console.log(city);
+            displayWeather();
+
 
         })
     }
