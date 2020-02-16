@@ -122,7 +122,7 @@ $(document).ready(function () {
 
                 cardBody.append($("<h5>").addClass(".card-title").text(moment().add(i + 1, 'days').format('l')));
 
-                cardBody.append($("<img>").addClass(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + forecast.list[i].weather[0].icon + "@2x.png"));
+                cardBody.append($("<img>").addClass(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + forecast.list[i].weather[0].icon + "@2x.png").attr("title", forecast.list[i].weather[0].main).attr("alt", forecast.list[i].weather[0].main));
 
                 cardBody.append($("<div>").addClass(".card-temperature").addClass("my-1").text("Temp: " + forecast.list[i].main.temp + " °F"));
 
