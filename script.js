@@ -42,7 +42,7 @@ $(document).ready(function () {
             var windSpeed = current.wind.speed;
             $(".city").addClass("h3 px-2 pt-3").text(name);
             $(".date").addClass("h3 pt-3").text("(" + moment().format('L') + ")"); // Moment.js was the easiest way to display current date
-            $(".icon").attr("src", "http://openweathermap.org/img/wn/" + woz + "@2x.png").attr("title", conditions).attr("alt", conditions);
+            $(".icon").attr("src", "https://openweathermap.org/img/wn/" + woz + "@2x.png").attr("title", conditions).attr("alt", conditions);
             $(".temperature").addClass("h5 p-2").text("Temperature: " + temperature + " °F");
             $(".humidity").addClass("h5 p-2").text("Humidity: " + humidity + "%");
             $(".wind-speed").addClass("h5 p-2").text("Wind Speed: " + windSpeed + " MPH");
@@ -74,7 +74,7 @@ $(document).ready(function () {
                 var cardCreation = $("<div>").addClass("card text-white bg-primary mb-2").attr("id", "card" + i);
                 var cardBody = $("<div>").addClass("card-body");
                 cardBody.append($("<h5>").addClass(".card-title").text(moment().add(i + 1, 'days').format('l')));
-                cardBody.append($("<img>").addClass(".card-icon").attr("src", "http://openweathermap.org/img/wn/" + forecast.list[i].weather[0].icon + "@2x.png").attr("title", forecast.list[i].weather[0].main).attr("alt", forecast.list[i].weather[0].main));
+                cardBody.append($("<img>").addClass(".card-icon").attr("src", "https://openweathermap.org/img/wn/" + forecast.list[i].weather[0].icon + "@2x.png").attr("title", forecast.list[i].weather[0].main).attr("alt", forecast.list[i].weather[0].main));
                 cardBody.append($("<div>").addClass(".card-temperature").addClass("my-1").text("Temp: " + forecast.list[i].main.temp + " °F"));
                 cardBody.append($("<div>").addClass(".card-humidity").text("Humidity: " + forecast.list[i].main.humidity + "%"));
                 cardCreation.append(cardBody);
