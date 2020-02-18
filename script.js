@@ -2,8 +2,8 @@ $(document).ready(function () {
     $(".error").hide();
     $(".forecast").hide();
     $(".main").hide();
-    var cityHistory = JSON.parse(localStorage.getItem("City History"));
     var city; // Definiing this now was necessary for displayWeather function to work
+    var cityHistory = JSON.parse(localStorage.getItem("City History"));
     if (cityHistory === null) {
         cityHistory = [];
     };
@@ -28,7 +28,7 @@ $(document).ready(function () {
         $(".main").show();
         var apiKey = "8c20fecf1dc12b4c826b47b8de6dbee6";
         var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=" + city + "&appid=" + apiKey;
-        $.ajax({
+        $.ajax({ // Current Weather AJAX Call
             url: currentWeatherURL,
             method: "GET"
         }).then(function (current) {
@@ -49,7 +49,7 @@ $(document).ready(function () {
             var longitude = current.coord.lon;
             var latitude = current.coord.lat;
             var uvURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?appid=" + apiKey + "&lat=" + latitude + "&lon=" + longitude;
-            $.ajax({
+            $.ajax({ // UV Index AJAX Call
                 url: uvURL, // needed latitude and longitude from currentweather API to work
                 method: "GET"
             }).then(function (UV) {
@@ -62,12 +62,11 @@ $(document).ready(function () {
             $(".error").text("Cannot find results for \"" + city + ".\" Please use a different city.").show();
         });
         var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + city + "&appid=" + apiKey;
-        $.ajax({
+        $.ajax({ // 5-Day forcast API
             url: forecastURL,
             method: "GET"
         }).then(function (forecast) {
-            // Only need 5 cards
-            var cardLength = 5;
+            var cardLength = 5;           // Only need 5 cards
             $(".card-deck").empty();
             $(".forecast").show();
             for (var i = 0; i < cardLength; i++) {
@@ -82,12 +81,12 @@ $(document).ready(function () {
             };
         });
     };
-    function historyList() {
+    function historyList() { // Fills in the history list
         $.each(cityHistory, function (i, value) {
             $(".history").prepend($("<li>").addClass("list-group-item text-secondary").text(value));
         });
     };
-    function clickHistory() {
+    function clickHistory() { // Clicking on history turns the color blue, subtle way of showing client what was clicked
         $(".list-group-item").click(function () {
             $(".list-group-item").addClass("text-secondary").removeClass("text-primary");
             $(this).removeClass("text-secondary").addClass("text-primary");
