@@ -75,8 +75,8 @@ $(document).ready(function () {
                 var cardBody = $("<div>").addClass("card-body");
                 cardBody.append($("<h5>").addClass("card-title").text(moment().add(i + 1, 'days').format('l')));
                 cardBody.append($("<img>").addClass("card-icon").attr("src", "https://openweathermap.org/img/wn/" + forecast.list[i].weather[0].icon + "@2x.png").attr("title", forecast.list[i].weather[0].main).attr("alt", forecast.list[i].weather[0].main));
-                cardBody.append($("<div>").addClass("card-temperature").addClass("my-1").text("Temp: " + forecast.list[i].main.temp + " °F"));
-                cardBody.append($("<div>").addClass("card-humidity").text("Humidity: " + forecast.list[i].main.humidity + "%"));
+                cardBody.append($("<p>").addClass("card-temperature").addClass("my-1").text("Temp: " + forecast.list[i].main.temp + " °F"));
+                cardBody.append($("<p>").addClass("card-humidity").text("Humidity: " + forecast.list[i].main.humidity + "%"));
                 cardCreation.append(cardBody);
                 $(".card-deck").append(cardCreation);
             };
