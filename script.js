@@ -69,7 +69,6 @@ $(document).ready(function () {
             var fiveDayArr = [];
             var nextDay = 0;
             $.each(forecast.list, function (i, value) { // Filters out data for noon of the next 5 days from now into a new array
-                var apiTime = value.dt_txt;
                 var apiDate = moment.unix(value.dt).format();
                 var matchDate = moment.utc().add(nextDay + 1, 'days').hour(12).minutes(0).second(0).format();
                 if (moment(apiDate).isSame(matchDate, "day") && moment(apiDate).isSame(matchDate, "hour")) {
