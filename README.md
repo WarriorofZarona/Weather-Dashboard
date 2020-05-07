@@ -15,7 +15,7 @@ Using an API call to generate an up-to-date weather dashboard based on city loca
 None
 
 # Usage
-Check weather in a city location
+User can type in a city location, then the weather app will display the current weather data for that location as well as a five day forecast.
 
 # License
 None
