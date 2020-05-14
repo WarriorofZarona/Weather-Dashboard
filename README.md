@@ -1,5 +1,8 @@
 
 # Weather Dashboard ![GitHub package.json version](https://img.shields.io/github/package-json/v/WarriorofZarona/Good-README-Generator)
+
+![Weather Dashboard](/Weather-Dashboard.png)
+
 Using an API call to generate an up-to-date weather dashboard based on city location
 
 # Tables of Contents
